@@ -1,0 +1,8 @@
+function saveDetails(index,data){
+      if(index === index.length){
+        res.status(200).json("Fetched and saved")
+      }
+      await FetchPersonals.insertMany(data[i]);
+      saveDetails(index+1,data)
+    };
+    saveDetails(0,data)
