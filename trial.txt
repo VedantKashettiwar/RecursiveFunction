@@ -6,3 +6,7 @@ function saveDetails(index,data){
       saveDetails(index+1,data)
     };
     saveDetails(0,data)
+
+    -------------------------------------------------------------------------------------------------------
+for (var i = 0; i < 2000; ++i) {
+}
