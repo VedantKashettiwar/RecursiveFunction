@@ -121,14 +121,13 @@ const showDetails = async (req, res) => {
     res.status(500).json(err);
   }
 };
-const savePersonal = async(item)=>{
-  await FetchPersonals.bulkWrite([
-    {
-      insertOne: {
-        document: item
-      },
-    }
-  ])
+const savePersonal = (item)=>{
+  const add = {
+    name:item.name,
+    email:item.email,
+    phone:item.phone
+  }
+  return {insertOne:{"document":add}}
 }
 const fetchDetails = async (req, res) => {
   try {
@@ -139,7 +138,8 @@ const fetchDetails = async (req, res) => {
         return res.status(200).send("Fetch And Saved");
       } else {
         const array = data[index]
-        array.map(savePersonal)
+        const newArray = array.map(savePersonal)
+        FetchPersonals.bulkWrite(newArray)
         saveData(index + 1, data, res);
       }
     }
