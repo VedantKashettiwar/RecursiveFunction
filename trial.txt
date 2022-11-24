@@ -1,12 +1,66 @@
-function saveDetails(index,data){
-      if(index === index.length){
-        res.status(200).json("Fetched and saved")
-      }
-      await FetchPersonals.insertMany(data[i]);
-      saveDetails(index+1,data)
-    };
-    saveDetails(0,data)
-
-    -------------------------------------------------------------------------------------------------------
-for (var i = 0; i < 2000; ++i) {
+const data =[
+[{
+    name:"Vedant",
+    roll:1
+},
+{
+    name:"Vedant",
+    roll:2
+},
+{
+    name:"Vedant",
+    roll:3
+},
+{
+    name:"Vedant",
+    roll:4
+},
+{
+    name:"Vedant",
+    roll:5
+},
+{
+    name:"Vedant",
+    roll:6
+},
+{
+    name:"Vedant",
+    roll:7
+},
+{
+    name:"Vedant",
+    roll:8
+},
+{
+    name:"Vedant",
+    roll:9
+},
+{
+    name:"Vedant",
+    roll:10
+}]
+]
+index=0
+let array = data[index]
+const savePersonalMain = (item)=>{
+  return {insertOne:{"document":item}}
 }
+
+function saveArraydata(indexMain,array,start_,end_,limit){
+    let al=array.length/limit
+    al=Math.ceil(al)
+    if(indexMain !==al){
+        let start = start_
+        let end = end_
+        array1=array.slice(start,end)
+        console.log(array1.map(savePersonalMain))
+        start=start+limit
+        end=end+limit
+        saveArraydata(indexMain+1,array,start,end,limit)
+    }
+    else{
+        return false
+        }
+    }
+let limit=3
+saveArraydata(0,array,0,limit,limit)
